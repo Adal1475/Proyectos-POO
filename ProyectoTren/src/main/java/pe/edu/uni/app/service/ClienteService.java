@@ -28,7 +28,7 @@ public class ClienteService {
 		//Validar Apellidos y Nombres
 		sql = "Select count(1) cont from Cliente ";
 		sql += "Where vch_cliepaterno = ? and vch_cliematerno = ? and vch_clienombre = ?";
-		i = jdbctemplate.queryForObject(sql, Integer.class,dto.getApellPaterno(),dto.getApellMaterno(),dto.getNombre());
+		i = jdbctemplate.queryForObject(sql, Integer.class,dto.getPaterno(),dto.getMaterno(),dto.getNombre());
 		if(i == 1) {
 			throw new RuntimeException("Empleado ya registrado con los apellidos y nombres ingresado");
 		}
@@ -55,7 +55,7 @@ public class ClienteService {
 		//Registrar en la Tabla Clientes
 		sql = "Insert into Cliente ";
 		sql += "Values (?,?,?,?,?,?,?,?,?)";
-		jdbctemplate.update(sql,clieCodigo,dto.getApellPaterno(),dto.getApellMaterno(),dto.getNombre(),dto.getDni(),dto.getCiudad(),dto.getDireccion(),dto.getTelefono(),dto.getEmail());
+		jdbctemplate.update(sql,clieCodigo,dto.getPaterno(),dto.getMaterno(),dto.getNombre(),dto.getDni(),dto.getCiudad(),dto.getDireccion(),dto.getTelefono(),dto.getEmail());
 
 		//Registrar en la Tabla Movimiento
 		sql="select count(*) filas from Movimiento where chr_tipocodigo= '006'";
