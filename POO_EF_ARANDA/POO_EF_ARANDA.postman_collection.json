@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "c9b80d79-9aa8-48d9-90ed-8f592fb51c95",
+		"name": "POO_EF_ARANDA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30773335"
+	},
+	"item": [
+		{
+			"name": "PresentarReporte",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"alumno\": \"YESENIA VIRHUEZ\",\r\n    \"curso\": \"SQL Server Administraci?n\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/presentar/reporte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"presentar",
+						"reporte"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarMatricula",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"alumno\": \"YESENIA VIRHUEZ\",\r\n    \"curso\": \"SQL Server Administraci?n\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pago/validarmatricula",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pago",
+						"validarmatricula"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarCuota",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"alumno\": \"GLADYS REYES CORTIJO\",\r\n    \"curso\": \"SQL Server Administraci?n\",\r\n    \"cuota\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pago/validarcuota",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pago",
+						"validarcuota"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarImporte",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"alumno\": \"GLADYS REYES CORTIJO\",\r\n    \"curso\": \"SQL Server Administraci?n\",\r\n    \"cuota\": 3,\r\n    \"importe\": 300\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pago/validarimporte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pago",
+						"validarimporte"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegistrarPago",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emp_id\": 2,\r\n    \"alumno\": \"GLADYS REYES CORTIJO\",\r\n    \"curso\": \"SQL Server Administraci?n\",\r\n    \"cuota\": 3,\r\n    \"importe\": 300\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pago/registrarpago",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pago",
+						"registrarpago"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

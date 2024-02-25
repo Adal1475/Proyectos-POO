@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "767de8bd-514d-4ca2-ad34-523167100f6b",
+		"name": "POO_ES_SOLU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30773335"
+	},
+	"item": [
+		{
+			"name": "ResumenMovimientos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/resumen/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resumen",
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResumenCuentas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/resumen/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resumen",
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarCuentas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codcuentaorigen\": \"00100001\",\r\n    \"codcuentadestino\": \"00200001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/transferencia/validarcuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transferencia",
+						"validarcuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarMoneda",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codcuentaorigen\": \"00100001\",\r\n    \"codcuentadestino\": \"00200001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/transferencia/validarmoneda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transferencia",
+						"validarmoneda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarImporte",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codcuentaorigen\": \"00100001\",\r\n    \"codcuentadestino\": \"00200001\",\r\n    \"importe\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/transferencia/validarimporte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transferencia",
+						"validarimporte"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ValidarSaldo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codcuentaorigen\": \"00100001\",\r\n    \"codcuentadestino\": \"00200001\",\r\n    \"importe\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/transferencia/validarsaldo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transferencia",
+						"validarsaldo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transferencia",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
