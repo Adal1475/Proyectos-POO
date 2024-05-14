@@ -1,0 +1,182 @@
+-- Crea la base de datos
+CREATE DATABASE BDDProyectoTren
+GO
+-- Utiliza la base de datos creada
+USE BDDProyectoTren
+GO
+
+create table Empleado ( --el empleado regitra la tarjeta
+	chr_emplcodigo		CHAR(4) NOT NULL,
+	vch_emplpaterno		VARCHAR(25) NOT NULL,
+	vch_emplmaterno     VARCHAR(25) NOT NULL,
+	vch_emplnombre      VARCHAR(30) NOT NULL,
+	chr_empldni			CHAR(8) NOT NULL,
+	vch_emplciudad      VARCHAR(30) NOT NULL,
+	vch_empldireccion	VARCHAR(50) NULL,
+	vch_emplusuario		VARCHAR(15) NOT NULL,
+	vch_emplclave       VARCHAR(15) NOT NULL,
+	CONSTRAINT PK_Empleado PRIMARY KEY (chr_emplcodigo),
+	CONSTRAINT U_Empleado_vch_emplusuario UNIQUE (vch_emplusuario)
+);
+Go
+
+INSERT INTO Empleado VALUES ('0001', 'Chevez', 'Collahuacho', 'Matiaz', '70972359', 'Lima', 'Av. revolucion', 'nobe', '1234')
+INSERT INTO Empleado VALUES ('0002', 'Borja', 'Loyola', 'Erick', '70918347', 'Lima', 'Av. campoy', 'ancelotti', '1432')
+INSERT INTO Empleado VALUES ('0003', 'Aranda', 'Nuñez', 'Adal', '70918238', 'Lima', 'Av. los heroes', 'musica', '4321')
+
+create table Estacion (
+	chr_estacodigo		CHAR(2) NOT NULL,
+	vchr_estanombre 	VARCHAR(20) NOT NULL,
+	vchr_estadistrito 	VARCHAR(50) NOT NULL, --distrito en el que se encuentra la estacion
+	int_estacuenta		MONEY NOT NULL, --para saber cuanto es el ingreso en la estacion
+	int_estaconttarj    INTEGER NOT NULL, -- para contar cuantas tarjetas hay por estacion
+	int_estaultimoid	CHAR(2),
+	CONSTRAINT PK_Estacion PRIMARY KEY (chr_estacodigo)
+);
+Go
+
+insert into Estacion values ('01','Villa el Salvador','Villa el Salvador',0,0,'00')
+insert into Estacion values ('02','Parque Industrial','Villa el Salvador',0,0,'01')
+insert into Estacion values ('03','Pumacahua','Villa Maria del Triunfo',0,0,'02')
+insert into Estacion values ('04','Villa Maria','San Juan de Miraflores',0,0,'03')
+insert into Estacion values ('05','Maria Auxiliadora','San Juan de Miraflores',0,0,'04')
+insert into Estacion values ('06','San Juan','San Juan de Miraflores',0,0,'05')
+insert into Estacion values ('07','Atocongo','San Juan de Miraflores',0,0,'06')
+insert into Estacion values ('08','Jorge Chavez','Santiago de Surco',0,0,'07')
+insert into Estacion values ('09','Ayacucho','Santiago de Surco',0,0,'08')
+insert into Estacion values ('10','Cabitos','Santiago de Surco',0,0,'09')
+insert into Estacion values ('11','Angamos','San Borja',0,0,'10')
+insert into Estacion values ('12','San Borja Sur','San Borja',0,0,'11')
+insert into Estacion values ('13','La Cultura','San Borja',0,0,'12')
+insert into Estacion values ('14','Arriola','La Victoria',0,0,'13')
+insert into Estacion values ('15','Gamarra','La Victoria',0,0,'14')
+insert into Estacion values ('16','Miguel Grau','El Agustino',0,0,'15')
+insert into Estacion values ('17','El Angel','El Agustino',0,0,'16')
+insert into Estacion values ('18','Presbitero Maestro','El Agustino',0,0,'17')
+insert into Estacion values ('19','Caja de Agua','San Juan de Lurigancho',0,0,'18')
+insert into Estacion values ('20','Piramide del Sol','San Juan de Lurigancho',0,0,'19')
+insert into Estacion values ('21','Los Jardines','San Juan de Lurigancho',0,0,'20')
+insert into Estacion values ('22','Los Postes','San Juan de Lurigancho',0,0,'21')
+insert into Estacion values ('23','San Carlos','San Juan de Lurigancho',0,0,'22')
+insert into Estacion values ('24','San Martin','San Juan de Lurigancho',0,0,'23')
+insert into Estacion values ('25','Santa Rosa','San Juan de Lurigancho',0,0,'24')
+insert into Estacion values ('26','Bayovar','San Juan de Lurigancho',0,0,'26')
+
+
+create table Cliente (
+	chr_cliecodigo		CHAR(5) NOT NULL,
+	vch_cliepaterno		VARCHAR(25) NOT NULL,
+	vch_cliematerno		VARCHAR(25) NOT NULL,
+	vch_clienombre		VARCHAR(30) NOT NULL,
+	chr_cliedni			CHAR(8) NOT NULL,
+	vch_clieciudad		VARCHAR(30) NOT NULL,
+	vch_cliedireccion	VARCHAR(50) NOT NULL,
+	vch_clietelefono	VARCHAR(20) NULL,
+	vch_clieemail		VARCHAR(50) NULL,
+	CONSTRAINT PK_Cliente PRIMARY KEY (chr_cliecodigo)
+);
+go
+
+INSERT INTO Cliente VALUES ('00001', 'Guisado', 'Alejo', 'Sharon', '71928345', 'Lima', 'Centro Civico', '999888777', 'sharon.guisado.a@uni.pe')
+INSERT INTO Cliente VALUES ('00002', 'Bernal', 'Tamayo', 'Diego', '70923457', 'Lima', 'Puente Piedra', '921980234', 'diego.bernal.t@uni.pe')
+INSERT INTO Cliente VALUES ('00003', 'Anyaipoma', 'Hurtado', 'Saul', '69801234', 'Lima', 'Av. Tupac Amaru', '978777222', 'saul.anyaipoma.h@uni.pe')
+
+create table TipoMovimiento (
+	chr_tipocodigo       CHAR(3) NOT NULL,
+	vch_tipodescripcion  VARCHAR(40) NOT NULL,
+	CONSTRAINT PK_TipoMovimiento PRIMARY KEY (chr_tipocodigo),
+);
+go
+
+insert into TipoMovimiento values( '001', 'Apertura de Tarjeta Medio');
+insert into TipoMovimiento values( '002', 'Apertura de Tarjeta Normal');
+insert into TipoMovimiento values( '003', 'Eliminar Tarjeta');
+insert into TipoMovimiento values( '004', 'Recargar Saldo');
+insert into TipoMovimiento values( '005', 'Pagar Servicio de Tren');
+insert into TipoMovimiento values( '006', 'Registrar Nuevo Cliente');
+insert into TipoMovimiento values( '007', 'Registrar Nuevo Empleado');
+insert into TipoMovimiento values( '008', 'Cambiar Tarifa');
+go
+
+create table TipoTarjeta (
+	chr_tipotarjcodigo			CHAR(2) NOT NULL,
+	vchr_tipotarjdescripcion	VARCHAR(20) NOT NULL,
+	float_tipotarjtarifa		FLOAT NOT NULL,
+	CONSTRAINT PK_TipoTarjeta PRIMARY KEY (chr_tipotarjcodigo)
+);
+go
+
+insert into TipoTarjeta values ('01','NORMAL',1.50)
+insert into TipoTarjeta values ('02','MEDIO',0.75)
+
+create table Tarjeta (
+	chr_tarjcodigo 		CHAR(6) NOT NULL,
+	chr_tarjtipo 		CHAR(2) NOT NULL,
+	chr_estacodigo		CHAR(2) NOT NULL,
+	chr_emplcreatarjeta	CHAR(4) NOT NULL,
+	chr_cliecodigo		CHAR(5) NOT NULL,
+	dec_tarjsaldo 		MONEY NOT NULL,
+	dtt_tarjfechacreacion	DATETIME NOT NULL,
+	CONSTRAINT PK_Tarjeta PRIMARY KEY (chr_tarjcodigo),
+	CONSTRAINT fk_tarjeta_cliente FOREIGN KEY (chr_cliecodigo) REFERENCES Cliente (chr_cliecodigo), 
+	CONSTRAINT fk_tarjeta_empleado FOREIGN KEY (chr_emplcreatarjeta) REFERENCES Empleado (chr_emplcodigo), 
+	CONSTRAINT fk_tarjeta_estacion FOREIGN KEY (chr_estacodigo) REFERENCES Estacion (chr_estacodigo), 
+	CONSTRAINT fk_tarjeta_tipo_tarjeta FOREIGN KEY (chr_tarjtipo) REFERENCES TipoTarjeta (chr_tipotarjcodigo),
+);
+Go
+
+INSERT INTO Tarjeta VALUES ('030001', '01', '03', '0001', '00001', 0.0000, CAST('2023-11-14T17:00:05.340' AS DateTime))
+INSERT INTO Tarjeta VALUES ('190001', '01', '19', '0002', '00003', 0.0000, CAST('2023-11-14T17:01:02.060' AS DateTime))
+INSERT INTO Tarjeta VALUES ('190002', '02', '19', '0002', '00002', 0.0000, CAST(N'2023-11-14T17:03:52.437' AS DateTime))
+INSERT INTO Tarjeta VALUES ('030002', '02', '03', '0001', '00003', 0.0000, CAST(N'2023-11-14T17:14:33.920' AS DateTime))
+INSERT INTO Tarjeta VALUES ('040001', '02', '04', '0003', '00001', 0.0000, CAST(N'2023-11-14T17:14:42.233' AS DateTime))
+INSERT INTO Tarjeta VALUES (N'190003', N'01', N'19', N'0002', N'00003', 0.0000, CAST(N'2023-11-14T17:14:59.353' AS DateTime))
+GO
+
+CREATE TABLE Movimiento (
+	chr_tarjcodigo		 CHAR(6),
+	int_movinumero       INTEGER NOT NULL,
+	dtt_movifecha        DATETIME NOT NULL,
+	chr_cliecodigo		 CHAR(5),
+	chr_emplcodigo       CHAR(4),
+	chr_tipocodigo       CHAR(3) NOT NULL,
+	CONSTRAINT fk_movimiento_tipomovimiento FOREIGN KEY (chr_tipocodigo) REFERENCES TipoMovimiento (chr_tipocodigo),
+);
+go
+
+INSERT INTO Movimiento VALUES (NULL, 0, CAST('2023-11-14T15:48:48.550' AS DateTime), NULL, '0001', '007')
+INSERT INTO Movimiento VALUES (NULL, 0, CAST('2023-11-14T15:50:02.553' AS DateTime), NULL, '0002', '007')
+INSERT INTO Movimiento VALUES (NULL, 0, CAST('2023-11-14T15:52:58.363' AS DateTime), NULL, '0003', '007')
+INSERT INTO Movimiento VALUES (NULL, 0, CAST('2023-11-14T16:20:16.300' AS DateTime), '00001', NULL, '006')
+INSERT INTO Movimiento VALUES (NULL, 0, CAST('2023-11-14T16:21:47.017' AS DateTime), '00002', NULL, '006')
+INSERT INTO Movimiento VALUES (NULL, 0, CAST('2023-11-14T16:23:24.457' AS DateTime), '00003', NULL, '006')
+INSERT INTO Movimiento VALUES ('030001', 1, CAST('2023-11-14T17:00:05.350' AS DateTime), '00001', '0001', '001')
+INSERT INTO Movimiento VALUES ('190001', 1, CAST('2023-11-14T17:01:02.067' AS DateTime), '00003', '0002', '001')
+INSERT INTO Movimiento VALUES ('190002', 1, CAST('2023-11-14T17:03:52.440' AS DateTime), '00002', '0002', '002')
+INSERT INTO Movimiento VALUES ('030002', 1, CAST('2023-11-14T17:14:33.933' AS DateTime), '00003', '0001', '002')
+INSERT INTO Movimiento VALUES ('040001', 1, CAST('2023-11-14T17:14:42.243' AS DateTime), '00001', '0003', '002')
+INSERT INTO Movimiento VALUES ('190003', 1, CAST('2023-11-14T17:14:59.360' AS DateTime), '00003', '0002', '001')
+
+Create table Asignado (
+	chr_asigcodigo		CHAR(6) NOT NULL,
+	chr_estacodigo		CHAR(2) NOT NULL,
+	chr_emplcodigo		CHAR(4) NOT NULL,
+
+	CONSTRAINT PK_Asignado PRIMARY KEY (chr_asigcodigo),
+);
+Go
+
+INSERT INTO Asignado VALUES ('000001', '03', '0001')
+INSERT INTO Asignado VALUES ('000002', '19', '0002')
+INSERT INTO Asignado VALUES ('000003', '04', '0003')
+
+Create table Contador (
+	vchr_conttabla VARCHAR(25) NOT NULL,
+	int_contitem INTEGER NOT NULL,
+	CONSTRAINT PK_Contador PRIMARY KEY (vchr_conttabla)
+);
+Go
+INSERT INTO Contador VALUES ('Empleado', 3)
+INSERT INTO Contador VALUES ('Asignado', 3)
+INSERT INTO Contador VALUES ('Cliente', 3)
+
