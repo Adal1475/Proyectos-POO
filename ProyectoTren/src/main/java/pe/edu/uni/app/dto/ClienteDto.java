@@ -2,8 +2,8 @@ package pe.edu.uni.app.dto;
 
 public class ClienteDto {
 	
-	private String paterno;
-	private String materno;
+	private String apellPaterno;
+	private String apellMaterno;
 	private String nombre;
 	private String dni;
 	private String ciudad;
@@ -16,11 +16,11 @@ public class ClienteDto {
 		super();
 	}
 	
-	public ClienteDto(String paterno, String materno, String nombre, String dni, String ciudad,
+	public ClienteDto(String apellPaterno, String apellMaterno, String nombre, String dni, String ciudad,
 			String direccion, String telefono, String email, String empleado) {
 		super();
-		this.paterno = paterno;
-		this.materno = materno;
+		this.apellPaterno = apellPaterno;
+		this.apellMaterno = apellMaterno;
 		this.nombre = nombre;
 		this.dni = dni;
 		this.ciudad = ciudad;
@@ -38,17 +38,17 @@ public class ClienteDto {
 		this.empleado = empleado;
 	}
 
-	public String getPaterno() {
-		return paterno;
+	public String getApellPaterno() {
+		return apellPaterno;
 	}
-	public void setPaterno(String paterno) {
-		this.paterno = paterno;
+	public void setApellPaterno(String apellPaterno) {
+		this.apellPaterno = apellPaterno;
 	}
-	public String getMaterno() {
-		return materno;
+	public String getApellMaterno() {
+		return apellMaterno;
 	}
-	public void setMaterno(String materno) {
-		this.materno = materno;
+	public void setApellMaterno(String apellMaterno) {
+		this.apellMaterno = apellMaterno;
 	}
 	public String getNombre() {
 		return nombre;
